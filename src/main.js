@@ -39,6 +39,7 @@ router.beforeEach((route, redirect, next) => {
   }
 
   if (route.path !== '/login' && store.state.auth.token === '') {
+    alert('對不起, 您尚未登入')
     next({ path: '/login' })
   } else {
     next()

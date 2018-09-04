@@ -12,6 +12,11 @@ const SidebarStore = {
       name: 'Data',
       icon: 'ti-view-list-alt',
       path: '/data'
+    },
+    {
+      name: 'Auth',
+      icon: 'ti-key',
+      path: '/login'
     }
     // {
     //   name: 'Dashboard',
