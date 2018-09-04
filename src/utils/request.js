@@ -3,7 +3,7 @@ import store from '../store'
 import { getToken } from '@/utils/auth'
 
 const service = axios.create({
-  baseURL: 'http://localhost:8080' // api的base_url
+  baseURL: process.env.BASE_API // api的base_url
   // timeout: 15000
 })
 
