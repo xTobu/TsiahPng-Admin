@@ -18,6 +18,7 @@ import './assets/sass/paper-dashboard.scss'
 import 'es6-promise/auto'
 
 import store from './store'
+import { setToken, getToken } from '@/utils/auth'
 // plugin setup
 Vue.use(VueRouter)
 Vue.use(GlobalComponents)
@@ -29,6 +30,19 @@ Vue.use(SideBar)
 const router = new VueRouter({
   routes, // short for routes: routes
   linkActiveClass: 'active'
+})
+// 判斷登入狀態
+router.beforeEach((route, redirect, next) => {
+  let token = getToken()
+  if (token) {
+    store.commit('auth/updateToken', token)
+  }
+
+  if (route.path !== '/login' && store.state.auth.token === '') {
+    next({ path: '/login' })
+  } else {
+    next()
+  }
 })
 
 // global library setup

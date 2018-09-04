@@ -1,7 +1,8 @@
 <template>
     <div class="card">
         <div class="header">
-            <h4 class="title">Add Restaurant</h4>
+            <h4 class="title">新增餐廳</h4>
+            <p class="category">Add Restaurant</p>
         </div>
         <div class="content">
             <form>
