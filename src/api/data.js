@@ -7,3 +7,11 @@ export function getRestaurantsList () {
     method: 'get'
   })
 }
+
+export function postRestaurant (payload) {
+  return request({
+    url: 'api/tsiahpng/RestaurantAdd',
+    method: 'post',
+    data: qs.stringify(payload)
+  })
+}

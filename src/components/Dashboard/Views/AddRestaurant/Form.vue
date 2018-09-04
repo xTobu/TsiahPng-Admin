@@ -56,21 +56,17 @@ export default {
             if (this.restaurant.name === "") {
                 return alert("請輸入餐廳名稱");
             }
-            axios({
-                method: "POST",
-                data: qs.stringify({
-                    name: this.restaurant.name,
-                    price: this.restaurant.price,
-                    purpose: this.restaurant.purpose
-                }),
-                url: "http://localhost:8080/api/tsiahpng/RestaurantAdd"
-            })
-                .then(resp => {
-                    if (resp.data.result === "success") {
-                        alert("新增成功");
-                    }
-                })
-                .catch(err => {});
+            this.$store
+            .dispatch("data/actionAddRestaurant",this.restaurant)
+            .then(
+                response => {
+                   alert('新增成功')
+                   this.restaurant.name =''
+                },
+                error => {
+                    // console.error("error");
+                }
+            );
         }
     }
 };

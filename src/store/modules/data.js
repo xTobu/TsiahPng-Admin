@@ -1,4 +1,4 @@
-import { getRestaurantsList } from '@/api/data'
+import { getRestaurantsList, postRestaurant } from '@/api/data'
 const auth = {
   namespaced: true,
   state: {
@@ -7,6 +7,10 @@ const auth = {
   mutations: {
     updateRestaurantsList (state, RestaurantsList) {
       state.RestaurantsList = RestaurantsList
+    },
+    addRestaurant (state, Restaurant) {
+      state.RestaurantsList = state.RestaurantsList.concat(Restaurant)
+    //   [].push.apply(state.building.panoramas, panoramas);
     }
   },
   actions: {
@@ -20,6 +24,17 @@ const auth = {
           .catch(error => {
             reject(error)
           })
+      })
+    },
+    actionAddRestaurant ({ commit }, payload) {
+      return new Promise((resolve, reject) => {
+        postRestaurant(payload)
+            .then(data => {
+              resolve()
+            })
+            .catch(error => {
+              reject(error)
+            })
       })
     }
   },
