@@ -1,5 +1,5 @@
 import { login } from '@/api/login'
-import { setToken, getToken } from '@/utils/auth'
+import { setToken, removeToken } from '@/utils/auth'
 const auth = {
   namespaced: true,
   state: {
@@ -23,6 +23,10 @@ const auth = {
             reject(error)
           })
       })
+    },
+    actionLogout (context) {
+      context.commit('updateToken', '')
+      removeToken()
     },
     actionSetToken (context, payload) {
       context.commit('updateToken', payload.token)

@@ -47,7 +47,7 @@
 
                     <drop-down title="Settings" icon="ti-settings">
                         <li>
-                            <a href="#">Logout</a>
+                            <a href="#" @click.prevent="handleLogout">Logout</a>
                         </li>
                     </drop-down>
                 </ul>
@@ -83,6 +83,18 @@ export default {
         },
         hideSidebar() {
             this.$sidebar.displaySidebar(false);
+        },
+        handleLogout(){
+            this.$store
+            .dispatch("auth/actionLogout")
+            .then(
+                response => {
+                   alert('登出成功')
+                    this.$router.push('login')
+                },
+                error => {
+                }
+            );
         }
     }
 };
