@@ -17,10 +17,10 @@
             <slot>
 
             </slot>
-            <ul :class="navClasses">
+            <ul :class="navClasses" >
                 <!--By default vue-router adds an active class to each route link. This way the links are colored when clicked-->
-                <router-link v-for="(link,index) in sidebarLinks" :to="link.path" tag="li" :ref="link.name" :key="'key'+index">
-                    <a>
+                <router-link v-for="(link,index) in sidebarLinks" :to="link.path" tag="li" :ref="link.name" :key="'key'+index" @click.native="hideSidebar">
+                    <a >
                         <i :class="link.icon"></i>
 
                         <p>{{link.name}}
@@ -118,7 +118,11 @@ export default {
                 }
                 return found;
             });
-        }
+        },
+        hideSidebar() {
+            console.log(1)
+            this.$sidebar.displaySidebar(false);
+        },
     },
     mounted() {
         this.findActiveLink();
